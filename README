@@ -1,0 +1,37 @@
+Ciobanu Alin-Matei 325CB
+
+	Ideea temei:
+	- parcurg recursiv arborele printr-o functie recursiva RSD (radacina, stanga
+dreapta)
+	- adaug elementele intr-un vector
+	- in vector o sa am mereu un semn urmat de 2 operanzi
+	- realizez operatia intre cei 2
+	- suprascriu rezultatul
+	- la sfarsit, rezultatul final este reprezentat de singurul element ramas in vector
+
+	Functia atoi:
+	- convertesc stringurile in numere intregi
+	- iau fiecare caracter din string
+	- scad valoarea in ascii a lui '0' pentru convertire
+	- inmultesc registrul edx cu 10 si adaug valoarea de mai sus
+	- daca primul caracter e minus setez esi pe 1 sa tin minte ca nr negativ
+	- scad 1 si neg bitii (complementul fata de 2)
+
+	Functia RSD
+	- parcurgere arbore in preordine (radacina- stanga- dreapta)
+	- salvez in ebx adresa elementului curent
+	- verific daca e unul dintre operanzi (-,+,/,*) si il adaug in vector
+	codificat prin 0, 1, 2, 3
+	- in dl salvez primul caracter din stringul [ebx]
+	- daca dl reprezinta o cifra sau - inseamna ca ebx pointeaza la un numar
+	- atunci convertes stringul cu functia atoi
+	- adaug numarul in vector si fac jump la out pt. ca inseamna ca e frunza
+	- daca am operand dupa ce il adaug in vector codificat fac jump la go
+	unde apelez din nou functia RSD pentru elementul din stanga si din dreapta
+	- scot din vector elementele: in eax operandul din dreapta, in ebx
+	operandul din stanga, in ecx operatia (0, 1, 2 sau 3)
+	- in functie de valoarea lui ecx fac scadere, adunare, impartire sau inmultire
+	- rezulatul il pun pe locul semnului si astfel dupa apelul recursiv al lui
+	RSD se mai adauga un element si un operand si se realizeaza din nou operatia 
+	dintre primul rezultat si elementul nou adaugat
+	- la sfarsit rezultatul final se afla pe prima pozitie din vector
